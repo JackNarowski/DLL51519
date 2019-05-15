@@ -25,6 +25,7 @@ void loop() {
       buttonPushCounter++;
       activation1();
     } else {
+      buttonPushCounter++;
       activation2();
     }
     // Delay a little bit to avoid bouncing
