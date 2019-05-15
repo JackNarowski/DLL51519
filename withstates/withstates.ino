@@ -3,7 +3,7 @@ int LED = 11; //define the 8th digital pin for LED brick
 int Buzzer = 10;
 
 // Variables will change:
-int buttonPushCounter = 0;   // counter for the number of button presses
+int buttonPushCounter = 1;   // counter for the number of button presses
 int buttonState = 0;         // current state of the button
 int lastButtonState = 0;     // previous state of the button
 
@@ -21,7 +21,7 @@ void loop() {
   // compare the buttonState to its previous state
   if (buttonState != lastButtonState) {
     // if the state has changed, increment the counter
-    if (buttonState == HIGH) {
+    if (buttonPushCounter % 2 == 1) {
       buttonPushCounter++;
       activation1();
     } else {
@@ -33,7 +33,7 @@ void loop() {
  
 }
 }
-void activation1() {
+void activation1() {  //                         1. LIGHT + BUZZER
     analogWrite(LED,100); // light the LED
     delay(1000);
     analogWrite(Buzzer,100);
@@ -43,7 +43,7 @@ void activation1() {
     analogWrite(Buzzer,0);
     delay(1000);
 }
-void activation2() {
+void activation2() {  //                           2. LIGHT
   analogWrite(LED,100); // light the LED
   delay(1000);
   analogWrite(LED,0); // light the LED
@@ -54,10 +54,10 @@ void activation2() {
   delay(1000);
 
 
-    if (buttonPushCounter % 2 == 1) {
-    digitalWrite(LED, HIGH);
-  } else {
-    digitalWrite(LED, LOW);
-  }
+//    if (buttonPushCounter % 2 == 1) {
+//    analogWrite(LED, HIGH);
+//  } else {
+//    analogWrite(LED, LOW);
+//  }
 
 }
